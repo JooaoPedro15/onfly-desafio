@@ -13,3 +13,9 @@ def test_cancelled_is_not_billable():
 
 def test_no_show_is_not_billable():
     assert is_billable("NO_SHOW") is False
+
+
+def test_unknown_status_is_not_billable():
+    """Só CONFIRMED é faturável; status fora da regra não entra por padrão."""
+    assert is_billable("PENDING") is False
+
